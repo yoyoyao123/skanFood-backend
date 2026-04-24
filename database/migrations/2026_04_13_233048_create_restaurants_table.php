@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('slug')->unique(); // ex: menu.com/ma-paillote
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
+            $table->text('description')->nullable(); // Ajoute ceci
             
             // Configuration SaaS
             $table->string('currency')->default('XOF'); // FCFA par défaut

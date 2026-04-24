@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['restaurant_id', 'name'];
+    protected $fillable = ['restaurant_id', 'name','sort_order'];
 
     public function restaurant() {
         return $this->belongsTo(Restaurant::class);
