@@ -13,7 +13,7 @@ public function up(): void
 {
     Schema::create('products', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('restaurant_id')->constrained()->onDelete('cascade'); // <--- IL MANQUE SÛREMENT CELLE-CI
+        $table->foreignId('restaurant_id')->constrained()->onDelete('cascade'); 
         $table->foreignId('category_id')->constrained()->onDelete('cascade');
         $table->string('name');
         $table->text('description')->nullable();

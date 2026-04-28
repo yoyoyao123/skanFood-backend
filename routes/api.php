@@ -14,7 +14,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/menu/{slug}', [RestaurantController::class, 'getBySlug']);
   Route::get('/{id}/qrcode', [RestaurantController::class, 'generateQrCode']);
 
-// Route correcte pour le menu public
+
 
 
 // --- ROUTES PROTÉGÉES ---

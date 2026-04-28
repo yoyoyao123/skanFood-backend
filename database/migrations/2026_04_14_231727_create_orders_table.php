@@ -14,11 +14,11 @@ return new class extends Migration
     Schema::create('orders', function (Blueprint $table) {
         $table->id();
         $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
-        $table->foreignId('user_id')->nullable()->constrained(); // Nullable si client anonyme
-        $table->integer('total_price'); // En centimes (ex: 5000 pour 5000 FCFA)
-        $table->string('status')->default('pending'); // pending, preparing, ready, completed, cancelled
+        $table->foreignId('user_id')->nullable()->constrained(); 
+        $table->integer('total_price'); 
+        $table->string('status')->default('pending'); 
         $table->string('table_number')->nullable();
-        $table->text('notes')->nullable(); // Ex: "Pas d'oignons"
+        $table->text('notes')->nullable();
         $table->timestamps();
     });
 }

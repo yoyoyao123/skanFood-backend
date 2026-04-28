@@ -25,10 +25,10 @@ class AuthController extends Controller
                 'name' => $fields['name'],
                 'email' => $fields['email'],
                 'password' => bcrypt($fields['password']),
-                'role' => 'owner' // On définit le rôle par défaut
+                'role' => 'owner'
             ]);
 
-            // 2. Création du Restaurant lié
+        
             $user->restaurant()->create([
                 'name' => $fields['restaurant_name'],
                 'slug' => Str::slug($fields['restaurant_name']) . '-' . rand(1000, 9999),
@@ -62,7 +62,7 @@ class AuthController extends Controller
         return response()->json([
             'success' => true,
             'data' => [
-                'user' => $user->load('restaurant'), // On renvoie aussi les infos du resto
+                'user' => $user->load('restaurant'), 
                 'token' => $token
             ]
         ]);

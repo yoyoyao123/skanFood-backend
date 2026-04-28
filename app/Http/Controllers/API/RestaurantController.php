@@ -60,7 +60,7 @@ class RestaurantController extends Controller
     }
 
     /**
-     * 2. AFFICHER LE PROFIL (Via ID - Pour l'Admin/Dashboard)
+     
      */
     
     /**
@@ -68,9 +68,7 @@ class RestaurantController extends Controller
      */
     public function getBySlug($slug)
     {
-        // On charge les catégories ET les produits liés
         $restaurant = Restaurant::with(['categories.products' => function($query) {
-            // Remplace 'is_active' par 'is_available' si c'est le nom de ta colonne
             $query->where('is_available', true); 
         }])->where('slug', $slug)->first();
 
@@ -132,7 +130,7 @@ class RestaurantController extends Controller
             return response()->json(['message' => 'Restaurant introuvable'], 404);
         }
 
-        // URL pointant vers le futur front-end React
+        
         $url = "http://localhost:3000/menu/" . $restaurant->slug;
 
         $hexColor = $request->query('color', 'FF5722'); 

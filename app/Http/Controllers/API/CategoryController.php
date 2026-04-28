@@ -19,8 +19,8 @@ class CategoryController extends Controller
         }
 
         $categories = Category::where('restaurant_id', $restaurant->id)
-                              ->orderBy('sort_order', 'asc') // Utilise ta colonne sort_order !
-                              ->get();
+        ->orderBy('sort_order', 'asc') 
+        ->get();
 
         return response()->json([
             'success' => true,
@@ -28,7 +28,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    // 2. Créer une catégorie (avec vérification)
+    // 2. Créer une catégorie
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -36,8 +36,6 @@ class CategoryController extends Controller
             'name' => 'required|string|max:255',
             'sort_order' => 'nullable|integer'
         ]);
-
-        // SÉCURITÉ : Vérifier que le resto appartient à l'utilisateur
         if (!Restaurant::where('id', $request->restaurant_id)->where('user_id', auth()->id())->exists()) {
             return response()->json(['message' => 'Action non autorisée'], 403);
         }
@@ -60,7 +58,6 @@ class CategoryController extends Controller
             return response()->json(['success' => false, 'message' => 'Introuvable'], 404);
         }
 
-        // SÉCURITÉ : Vérifier via la relation restaurant
         if ($category->restaurant->user_id !== auth()->id()) {
             return response()->json(['message' => 'Action non autorisée'], 403);
         }

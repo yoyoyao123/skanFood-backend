@@ -16,7 +16,7 @@ return new class extends Migration
         $table->foreignId('order_id')->constrained()->onDelete('cascade');
         $table->foreignId('product_id')->constrained();
         $table->integer('quantity');
-        $table->integer('price'); // On stocke le prix au moment de l'achat (si le resto change ses prix après)
+        $table->integer('price'); 
         $table->timestamps();
     });
 }
