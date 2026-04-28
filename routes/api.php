@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
     
     // User
     Route::get('/user', function (Request $request) {
-        return $request->user()->load('restaurant'); // On charge le resto pour le front
+        return $request->user()->load('restaurant'); 
     });
 
     // Catégories
